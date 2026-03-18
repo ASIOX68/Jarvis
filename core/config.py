@@ -1,4 +1,8 @@
+import os
+from dotenv import load_dotenv
 from enum import Enum
+
+load_dotenv() # Charge le fichier .env
 
 # Enum for Log Levels
 class LogLevel(Enum):
@@ -10,7 +14,7 @@ class LogLevel(Enum):
 # --- Configuration Jarvis ---
 
 # IA (Google Gemini)
-GEMINI_API_KEY = "AIzaSyCJC_cbhRHjPjuOHk5Gu_olIbEDwPvB7rY"
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 # Modèle suggéré: gemini-2.5-flash, gemini-2.5-pro
 GEMINI_MODEL = "gemini-2.5-flash"
 
