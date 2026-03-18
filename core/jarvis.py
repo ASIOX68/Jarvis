@@ -5,6 +5,10 @@ from voice.tts import speak
 from ai.llm import ask_llm
 from system.commands import execute_system_command
 from system.files import handle_file_operation
+from system.web import search_web
+from system.media import control_spotify
+from system.images import generate_image
+from system.pdf import read_pdf
 from utils.logger import log_info, log_warning, log_error, log_success
 from core.config import WAKE_WORD
 
@@ -107,7 +111,35 @@ class Jarvis:
             elif action_type == "chat":
                 # Juste une réponse texte
                 pass
-            
+                
+            elif action_type == "web_search":
+                query = action_payload.get("query", "")
+                if query:
+                    search_result = search_web(query)
+                    # Relancer l'IA avec le résultat pour qu'elle le lise et réponde
+                    feedback = f"Résultat de la recherche pour '{query}' :\n{search_result}\n\nFais un résumé utile pour l'utilisateur."
+                    self.process_query(feedback, is_retry=True)
+                    
+            elif action_type == "spotify":
+                action = action_payload.get("action", "")
+                if action:
+                    res = control_spotify(action)
+                    log_info(res)
+
+            elif action_type == "image":
+                prompt = action_payload.get("prompt", "")
+                path = action_payload.get("path", "image_generee.jpg")
+                if prompt:
+                    res = generate_image(prompt, path)
+                    log_info(res)
+
+            elif action_type == "pdf_read":
+                path = action_payload.get("path", "")
+                if path:
+                    pdf_content = read_pdf(path)
+                    feedback = f"Contenu du PDF '{path}' :\n{pdf_content}\n\nAgis en conséquence avec ces données pour répondre à la demande."
+                    self.process_query(feedback, is_retry=True)
+
             else:
                 log_warning(f"Type d'action inconnu : {action_type}")
 

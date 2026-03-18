@@ -51,4 +51,4 @@ python main.py --voice
 *(Le mot de réveil par défaut est "Jarvis")*
 
 ---
-**⚠️ Sécurité** : Ne pushez jamais votre fichier `.env` contenant vos clés sur Github. Un filtre est activé dans le fichier `.gitignore` pour l'en empêcher. Des filtres dits "FORBIDDEN" sont activés dans `config.py` pour bloquer toute commande terminal potentiellement dangereuse (ex: rm -rf /).
+**⚠️ Sécurité** : Des filtres dits "FORBIDDEN" sont activés dans `config.py` pour bloquer toute commande terminal potentiellement dangereuse (ex: rm -rf /).

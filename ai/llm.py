@@ -43,6 +43,34 @@ Note : l'argument 'operation' DOIT être :
 - "read" (pour lire)
 - "delete" (pour supprimer)
 IMPORTANT: Le chemin ('path') DOIT toujours être défini précisément. Ne dis jamais des choses comme 'sur le bureau' ou '/Users/mon-bureau/' si tu es sur Linux. Utilise des chemins absolus en te basant sur le dossier actuel : {cwd} et le dossier utilisateur : {home}.
+
+4. Recherche sur le web :
+{{
+    "type": "web_search",
+    "message": "Je recherche cela sur internet...",
+    "payload": {{"query": "mots clés de recherche"}}
+}}
+
+5. Contrôle Spotify (Musique) :
+{{
+    "type": "spotify",
+    "message": "Je gère Spotify...",
+    "payload": {{"action": "play" ou "pause" ou "next" ou "previous" ou "open"}}
+}}
+
+6. Génération d'image :
+{{
+    "type": "image",
+    "message": "Je génère l'image demandée...",
+    "payload": {{"prompt": "description détaillée en anglais", "path": "chemin_absolu_vers_sauvegarde.jpg"}}
+}}
+
+7. Lecture de PDF :
+{{
+    "type": "pdf_read",
+    "message": "Je lis le document PDF...",
+    "payload": {{"path": "chemin_absolu_vers_le_fichier.pdf"}}
+}}
 """
 
 # Mémoire Conversationnelle (FIFO de 10 messages)

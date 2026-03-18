@@ -5,3 +5,5 @@ pyaudio
 requests
 google-generativeai
 python-dotenv
+duckduckgo-search
+pymupdf
