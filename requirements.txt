@@ -1,0 +1,6 @@
+colorama
+speechRecognition
+pyttsx3
+pyaudio
+requests
+google-generativeai
